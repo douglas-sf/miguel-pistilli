@@ -1,11 +1,9 @@
-import { Layout } from '../components/Layout';
+import { EquipmentsSummary } from '../components/EquipmentsSummary';
 
 export function Equipments() {
   return (
-    <Layout>
-      <main>
-        <h1>Equipamentos</h1>
-      </main>
-    </Layout>
+    <>
+      <EquipmentsSummary />
+    </>
   );
 }

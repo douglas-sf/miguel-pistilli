@@ -16,7 +16,7 @@ export function Menu() {
       <section className="mt-12 flex flex-col gap-1">
         <Accordion.Root type="multiple" className="flex flex-col gap-1">
           <Accordion.Item value="item-1">
-            <Accordion.Trigger className="px-6 py-4 w-full flex items-center gap-6 bg-primary-900 rounded-2xl text-white hover:bg-primary-800">
+            <Accordion.Trigger className="px-6 py-4 w-full flex items-center gap-6 bg-primary-900 rounded-2xl text-white hover:bg-primary-dark-shade transition-colors">
               <Users size={32} weight="bold" />
               <Link to="/usuarios" className="font-semibold text-lg">
                 Usuários

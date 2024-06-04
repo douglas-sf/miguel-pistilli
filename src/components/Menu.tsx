@@ -1,8 +1,26 @@
-import * as Accordion from '@radix-ui/react-accordion';
-import { Laptop, NotePencil, Users } from 'phosphor-react';
-import { Link } from 'react-router-dom';
+import { House, IconProps, Laptop, NotePencil, Users } from 'phosphor-react';
+import { ForwardRefExoticComponent } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+import { MenuOption } from './MenuOption';
+
+interface Option {
+  href: string;
+  label: string;
+  Icon: ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
+  isActive: boolean;
+}
 
 export function Menu() {
+  const { pathname } = useLocation();
+
+  const options: Option[] = [
+    { href: '/', label: 'Home', Icon: House, isActive: pathname === '/' },
+    { href: '/usuarios', label: 'Usuários', Icon: Users, isActive: pathname.startsWith('/usuarios') },
+    { href: '/equipamentos', label: 'Equipamentos', Icon: Laptop, isActive: pathname.startsWith('/equipamentos') },
+    { href: '/reservas', label: 'Reservas', Icon: NotePencil, isActive: pathname.startsWith('/reservas') },
+  ];
+
   return (
     <aside className="px-10 py-12 w-[345px] bg-white">
       <header>
@@ -13,52 +31,12 @@ export function Menu() {
         </Link>
       </header>
 
-      <section className="mt-12 flex flex-col gap-1">
-        <Accordion.Root type="multiple" className="flex flex-col gap-1">
-          <Accordion.Item value="item-1">
-            <Accordion.Trigger className="px-6 py-4 w-full flex items-center gap-6 bg-primary-900 rounded-2xl text-white hover:bg-primary-dark-shade transition-colors">
-              <Users size={32} weight="bold" />
-              <Link to="/usuarios" className="font-semibold text-lg">
-                Usuários
-              </Link>
-            </Accordion.Trigger>
-
-            <Accordion.Content>
-              <ul>
-                <li>Cadastro</li>
-                <li>Lista</li>
-              </ul>
-            </Accordion.Content>
-          </Accordion.Item>
-
-          <Accordion.Item value="item-2">
-            <Accordion.Trigger className="px-6 py-4 w-full flex items-center gap-6 bg-primary-900 rounded-2xl text-white">
-              <Laptop size={32} weight="bold" />
-              <span className="font-semibold text-lg">Equipamentos</span>
-            </Accordion.Trigger>
-
-            <Accordion.Content>
-              <ul>
-                <li>Cadastro</li>
-                <li>Lista</li>
-              </ul>
-            </Accordion.Content>
-          </Accordion.Item>
-
-          <Accordion.Item value="item-3">
-            <Accordion.Trigger className="px-6 py-4 w-full flex items-center gap-6 bg-primary-900 rounded-2xl text-white">
-              <NotePencil size={32} weight="bold" />
-              <span className="font-semibold text-lg">Reservas</span>
-            </Accordion.Trigger>
-
-            <Accordion.Content>
-              <ul>
-                <li>Minhas Reservas</li>
-                <li>Reservar</li>
-              </ul>
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion.Root>
+      <section>
+        <ul className="mt-12 flex flex-col gap-1">
+          {options.map((option) => (
+            <MenuOption {...option} />
+          ))}
+        </ul>
       </section>
     </aside>
   );

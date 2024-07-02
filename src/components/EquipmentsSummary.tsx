@@ -15,7 +15,7 @@ export function EquipmentsSummary() {
   });
 
   useEffect(() => {
-    api.get('/equipamentos/estatisticas').then(({ data }) => {
+    api.get('/equipamentos/info/contagem').then(({ data }) => {
       setEquipments((state) => ({ ...state, ...data }));
     });
   }, []);

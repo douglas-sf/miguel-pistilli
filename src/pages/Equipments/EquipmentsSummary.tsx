@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { EquipmentAmountCard } from './EquipmentAmountCard';
 
-import { api } from '../services/axios';
+import { api } from '../../services/axios';
 
 export function EquipmentsSummary() {
   const [equipments, setEquipments] = useState({

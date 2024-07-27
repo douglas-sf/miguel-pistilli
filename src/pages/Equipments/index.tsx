@@ -1,5 +1,5 @@
-import { EquipmentStatus } from '../components/EquipmentStatus';
-import { EquipmentsSummary } from '../components/EquipmentsSummary';
+import { EquipmentStatus } from './EquipmentStatus';
+import { EquipmentsSummary } from './EquipmentsSummary';
 
 export function Equipments() {
   return (

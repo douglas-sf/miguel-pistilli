@@ -1,46 +1,43 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
 import { Layout } from './components/Layout';
 
-import { Home } from './pages/Home';
-import { Equipments } from './pages/Equipments';
-import { Users } from './pages/Users';
 import { Bookings } from './pages/Bookings';
+import { Equipments } from './pages/Equipments';
+import { Home } from './pages/Home';
+import { Users } from './pages/Users';
 
-export const routes = createBrowserRouter([
-  {
-    path: '/',
+interface Route {
+  path: string;
+  title: string;
+  Page: () => JSX.Element;
+}
+
+const routes: Route[] = [
+  { path: '/', title: 'Página Principal', Page: Home },
+  { path: '/equipamentos', title: 'Equipamentos', Page: Equipments },
+  { path: '/usuarios', title: 'Usuários', Page: Users },
+  { path: '/reservas', title: 'Reservas', Page: Bookings },
+];
+
+const mainRoutes: RouteObject[] = routes.map((route) => {
+  const { path, title, Page } = route;
+
+  return {
+    path,
     element: (
-      <Layout title="Página Principal">
-        <Home />
+      <Layout title={title}>
+        <Page />
       </Layout>
     ),
-  },
+  };
+});
 
+const auxiliarRoutes: RouteObject[] = [
   {
-    path: '/equipamentos',
-    element: (
-      <Layout title="Equipamentos">
-        <Equipments />
-      </Layout>
-    ),
+    path: '/login',
+    element: <h1>Página de Login</h1>,
   },
+];
 
-  {
-    path: '/usuarios',
-    element: (
-      <Layout title="Usuários">
-        <Users />
-      </Layout>
-    ),
-  },
-
-  {
-    path: '/reservas',
-    element: (
-      <Layout title="Reservas">
-        <Bookings />
-      </Layout>
-    ),
-  },
-]);
+export const router = createBrowserRouter([...mainRoutes, ...auxiliarRoutes]);

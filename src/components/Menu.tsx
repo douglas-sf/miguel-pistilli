@@ -34,7 +34,7 @@ export function Menu() {
       <section>
         <ul className="mt-12 flex flex-col gap-1">
           {options.map((option) => (
-            <MenuOption {...option} />
+            <MenuOption key={option.label} {...option} />
           ))}
         </ul>
       </section>

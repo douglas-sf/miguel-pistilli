@@ -4,18 +4,18 @@ import { ForwardRefExoticComponent } from 'react';
 interface EquipmentAmountCardProps {
   Icon: ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
   label: string;
-  amount: number;
+  amount?: number;
   variant: 'pink' | 'yellow' | 'green' | 'violet';
 }
 
-export function EquipmentAmountCard({ Icon, label, amount, variant }: EquipmentAmountCardProps) {
-  const variantColors = {
-    pink: { bg: 'bg-support-pink-shade', icon: 'bg-support-pink' },
-    yellow: { bg: 'bg-support-yellow-shade', icon: 'bg-support-yellow' },
-    green: { bg: 'bg-support-green-shade', icon: 'bg-support-green' },
-    violet: { bg: 'bg-support-violet-shade', icon: 'bg-support-violet' },
-  };
+const variantColors = {
+  pink: { bg: 'bg-support-pink-shade', icon: 'bg-support-pink' },
+  yellow: { bg: 'bg-support-yellow-shade', icon: 'bg-support-yellow' },
+  green: { bg: 'bg-support-green-shade', icon: 'bg-support-green' },
+  violet: { bg: 'bg-support-violet-shade', icon: 'bg-support-violet' },
+};
 
+export function EquipmentAmountCard({ Icon, label, amount, variant }: EquipmentAmountCardProps) {
   const color = variantColors[variant];
 
   return (

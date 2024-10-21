@@ -12,11 +12,16 @@ export function EquipmentStatus() {
       <h2 className="text-primary-dark-shade font-semibold text-2xl">Checar Equipamento</h2>
 
       <form onSubmit={getEquipmentStatus}>
-        <div className="">
+        <div className="flex flex-col gap-2">
           <label htmlFor={id} className="text-blueGray-700">
             Código:
           </label>
-          <input type="text" id={id} name="codigo" />
+          <input
+            className="px-2 py-1 border-2 border-blueGray-700 rounded-md outline-none"
+            type="text"
+            id={id}
+            name="codigo"
+          />
         </div>
       </form>
     </section>

@@ -1,4 +1,4 @@
-import { DesktopTower, DeviceTabletCamera, GoogleChromeLogo, Laptop } from 'phosphor-react';
+import { Chrome, Laptop, PcCaseIcon, Tablet } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { EquipmentAmountCard } from './EquipmentAmountCard';
@@ -27,16 +27,11 @@ export function EquipmentsSummary() {
       </header>
 
       <div className="flex gap-8 flex-wrap">
-        <EquipmentAmountCard Icon={DeviceTabletCamera} label="Tablets" amount={equipments.tablet} variant="pink" />
+        <EquipmentAmountCard Icon={Tablet} label="Tablets" amount={equipments.tablet} variant="pink" />
 
-        <EquipmentAmountCard
-          Icon={GoogleChromeLogo}
-          label="Chromebooks"
-          amount={equipments.chromebook}
-          variant="yellow"
-        />
+        <EquipmentAmountCard Icon={Chrome} label="Chromebooks" amount={equipments.chromebook} variant="yellow" />
 
-        <EquipmentAmountCard Icon={DesktopTower} label="Computadores" amount={equipments.computador} variant="green" />
+        <EquipmentAmountCard Icon={PcCaseIcon} label="Computadores" amount={equipments.computador} variant="green" />
 
         <EquipmentAmountCard Icon={Laptop} label="Notebooks" amount={equipments.notebook} variant="violet" />
       </div>

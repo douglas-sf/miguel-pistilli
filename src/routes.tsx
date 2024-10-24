@@ -20,18 +20,14 @@ const routes: Route[] = [
   { path: '/reservas', title: 'Reservas', Page: Bookings },
 ];
 
-const mainRoutes: RouteObject[] = routes.map((route) => {
-  const { path, title, Page } = route;
-
-  return {
-    path,
-    element: (
-      <Layout title={title}>
-        <Page />
-      </Layout>
-    ),
-  };
-});
+const mainRoutes: RouteObject[] = routes.map(({ path, title, Page }) => ({
+  path,
+  element: (
+    <Layout title={title}>
+      <Page />
+    </Layout>
+  ),
+}));
 
 const auxiliarRoutes: RouteObject[] = [
   {

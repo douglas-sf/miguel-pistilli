@@ -1,8 +1,8 @@
-import { IconProps } from 'phosphor-react';
+import { LucideProps } from 'lucide-react';
 import { ForwardRefExoticComponent } from 'react';
 
 interface EquipmentAmountCardProps {
-  Icon: ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
+  Icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>>;
   label: string;
   amount?: number;
   variant: 'pink' | 'yellow' | 'green' | 'violet';
@@ -22,7 +22,7 @@ export function EquipmentAmountCard({ Icon, label, amount, variant }: EquipmentA
     <div className={'p-5 flex flex-col gap-5 rounded-2xl ' + color.bg}>
       <header className="flex items-center gap-4">
         <div className={'w-10 h-10 flex justify-center items-center rounded-full text-white ' + color.icon}>
-          <Icon size={24} weight="bold" />
+          <Icon className="size-6" strokeWidth={2} />
         </div>
 
         <h3 className="text-lg font-semibold text-blueGray-900">{label}</h3>
